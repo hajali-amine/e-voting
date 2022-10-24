@@ -1,0 +1,15 @@
+version: "3.4"
+services:
+  ganache:
+    image: aminehajali/ganache
+    ports:
+      - "8545:8545"
+  truffle:
+    image: aminehajali/truffle
+    command: /bin/sh
+    stdin_open: true
+    tty: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/code
