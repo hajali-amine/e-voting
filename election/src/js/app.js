@@ -9,15 +9,10 @@ App = {
   },
   initWeb3: function () {
     if (typeof web3 !== "undefined") {
-      ethereum.enable().then(msg => console.log(msg, "test"));
-      App.web3Provider = web3.currentProvider;
-      web3 = new Web3(web3.currentProvider);
-    } else {
-      App.web3Provider = new
-        Web3.providers.HttpProvider("http://ganache:8545");
+      App.web3Provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
       web3 = new Web3(App.web3Provider);
+      return App.initContract();
     }
-    return App.initContract();
   },
   initContract: function () {
     $.getJSON("Election.json", function (election) {
@@ -56,12 +51,10 @@ App = {
         }
       },
     );
-    console.log(App.contracts.Election.deployed())
-
     App.contracts.Election.deployed().then(
       function (instance) {
         electionInstance = instance;
-        return electionInstance.candidatesCount;
+        return electionInstance.candidatesCount();
       }
     ).then(
       function (candidatesCount) {
