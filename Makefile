@@ -8,7 +8,7 @@ push: build
 	@docker push aminehajali/ganache
 	@docker push aminehajali/ganache-cli-interface
 
-add_block:
+deploy_contract:
 	@docker exec truffle /bin/sh -c "cd election && truffle migrate --reset"
 
 run_front:

@@ -23,4 +23,3 @@ services:
     container_name: interface
     ports:
       - "5051:5051"
-
