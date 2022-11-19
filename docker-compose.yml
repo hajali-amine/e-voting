@@ -18,3 +18,9 @@ services:
       - "3001:3001"
     volumes:
       - ./:/code
+  interface:
+    image: aminehajali/ganache-cli-interface
+    container_name: interface
+    ports:
+      - "5051:5051"
+
